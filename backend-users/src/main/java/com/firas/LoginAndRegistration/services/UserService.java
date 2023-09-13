@@ -1,5 +1,6 @@
 package com.firas.LoginAndRegistration.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -9,6 +10,7 @@ import org.springframework.validation.BindingResult;
 
 import com.firas.LoginAndRegistration.models.LoginUser;
 import com.firas.LoginAndRegistration.models.User;
+import com.firas.LoginAndRegistration.models.Video;
 import com.firas.LoginAndRegistration.repositories.UserRepository;
 
 
@@ -65,6 +67,10 @@ public class UserService {
 		
 		return null;
 	}
+	// READ ALL
+	public List<User> allUsers(){
+		return userRepo.findAllUserByProfile(0);
+	}
 	
 	//   READ ONE
     public User findOne(Long id) {
@@ -78,6 +84,10 @@ public class UserService {
     public boolean emailExists(String email) {
         return userRepo.existsByEmail(email);
     }
+    
+    public void deleteUser(Long id) {
+		userRepo.deleteById(id);
+	}
     
     
 

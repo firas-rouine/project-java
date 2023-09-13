@@ -87,6 +87,15 @@ public class LoginController {
             }
         }
     
-
+        @GetMapping("/user")
+        public ResponseEntity<?> getAllUsers() {
+            List<User> users = userService.allUsers();
+System.out.println("txt");
+            if (!users.isEmpty()) {
+                return ResponseEntity.ok(users);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        }
 
 }

@@ -45,7 +45,7 @@ public class Address {
    
     
     
-	 @OneToOne(mappedBy="address", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	 @OneToOne(mappedBy="address", cascade=CascadeType.ALL, fetch=FetchType.LAZY,  orphanRemoval = true)
 	   @JsonBackReference
 	private Translator Addresstranslators;
 

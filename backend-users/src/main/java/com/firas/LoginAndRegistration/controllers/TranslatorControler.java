@@ -49,14 +49,19 @@ public class TranslatorControler {
     private AddressService addressService;
 
     @GetMapping
-    public ResponseEntity<List<Translator>> getAllTranslators() {
+    public ResponseEntity<List<TranslatorDTO>> getAllTranslators() {
         List<Translator> allTranslators = translatorService.allTranslators();
-
-        if (allTranslators.isEmpty()) {
-            return ResponseEntity.badRequest().body(allTranslators);
-        }
-        return ResponseEntity.ok().body(allTranslators);
-    }
+        
+        
+        List<TranslatorDTO> translatorDTOList = new ArrayList<>();
+        
+ 		for (Translator translator : allTranslators) {
+ 			translatorDTOList.add(mapToDTO(translator));
+ 		}
+ 		
+ 		return ResponseEntity.ok(translatorDTOList);
+ 	}
+    
 
     @PostMapping("/create")
     public ResponseEntity<Object> createTranslator(
@@ -171,16 +176,8 @@ public class TranslatorControler {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<TranslatorDTO> getTranslatorById(@PathVariable Long id) {
-        Translator translator = translatorService.findTranslator(id);
 
-        if (translator != null) {
-            return ResponseEntity.ok(mapToDTO(translator));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+
     
  // find by schedule Availability 
  	@PostMapping("/available")

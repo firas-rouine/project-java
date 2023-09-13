@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -65,18 +66,18 @@ public class Translator {
 	private Integer price;
 
 	// 1:1
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "user_id")
 	@JsonInclude(JsonInclude.Include.NON_NULL) 
 	@JsonManagedReference
 	@JsonIgnore
 	private User translator;
 	
-	@OneToMany(mappedBy="translator", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="translator", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Video> Translatorvideos;
 
 	// 1:M
-	@OneToMany(mappedBy="translator", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="translator", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	   @JsonInclude(JsonInclude.Include.NON_NULL) 
 	   @JsonManagedReference
 	   @JsonIgnore

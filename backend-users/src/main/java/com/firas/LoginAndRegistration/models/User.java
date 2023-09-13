@@ -62,14 +62,14 @@ public class User {
 
 	// 1:1
 	
-	@OneToOne(mappedBy="translator", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(mappedBy="translator", fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	
 	@JsonBackReference
 	private Translator translators;
 	
 
 
-	   @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+	   @OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	    private List<Video> videos;
 	   
 
