@@ -75,7 +75,7 @@ public class VideoController {
 			}
 
 			// Define the directory path for saving videos
-			String uploadDirectory = "C:/Users/dell/Downloads/java-project-main/front-master-dash/src/assets/video/";
+			String uploadDirectory = "C:/Users/dell/Desktop/project-java/frontend/src/assets/video/";
 
 			// Ensure the directory exists, if not, create it
 			File directory = new File(uploadDirectory);

@@ -71,14 +71,18 @@
           </li>
           <li
             class="menu-btn menu-btn-outline menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-70 depth-0">
-            <a href="/meeting" class="nav-link ">Video Call</a></li>
+            <a [routerLink]="['/meeting']" class="nav-link ">Video Call</a></li>
           <li
             class="menu-btn btn-arrow menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-69 depth-0">
             <a href="#stay-connected" class="nav-link ">Contact Signet</a></li>
 
             <li class="menu-btn btn-arrow menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-69 depth-0">
-              <a *ngIf="isUserLoggedIn()" href="/login" class="nav-link">Login</a>
-              <a *ngIf="!isUserLoggedIn()" href="/login" (click)="logout()" class="nav-link bg-danger">Log Out</a>
+              <a *ngIf="isUserLoggedIn()" [routerLink]="['/login']" class="nav-link">Login</a>
+              <a *ngIf="!isUserLoggedIn()" [routerLink]="['/login']" (click)="logout()" class="nav-link bg-danger">Log Out</a>
+            </li>
+            <li class="menu-btn menu-btn-outline menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-70 depth-0">
+              <a *ngIf="!isUserLoggedIn()" (click)="profile()" class="nav-link">Profile</a>
+              <!-- <a *ngIf="!isAdmin()" href="/login"class="nav-link bg-danger">translator</a> -->
             </li>
             
             <!-- ... Previous HTML code ... -->

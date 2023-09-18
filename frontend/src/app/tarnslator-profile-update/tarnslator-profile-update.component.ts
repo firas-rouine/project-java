@@ -19,7 +19,8 @@ export class TranslatorProfileUpdateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private translatorService: TranslatorService,
     private userService: UserService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.translatorForm = this.formBuilder.group({
       age: ['', [Validators.required, Validators.min(10), Validators.max(100)]],
@@ -75,7 +76,7 @@ export class TranslatorProfileUpdateComponent implements OnInit {
     if (this.translatorForm.valid && this.translatorId !== undefined) {
       const formData = this.translatorForm.value;
       this.updateTranslator(this.translatorId, formData);
-    }
+      this.router.navigate(['/admin']);  }
   }
 
   updateTranslator(translatorId: number, formData: any) {

@@ -176,7 +176,16 @@ public class TranslatorControler {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<TranslatorDTO> getTranslatorById(@PathVariable Long id) {
+        Translator translator = translatorService.findTranslator(id);
 
+        if (translator != null) {
+            return ResponseEntity.ok(mapToDTO(translator));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     
  // find by schedule Availability 

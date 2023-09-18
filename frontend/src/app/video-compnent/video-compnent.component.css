@@ -253,13 +253,22 @@
 .card.hovercard .cardheader {
   background: url("http://lorempixel.com/850/280/nature/4/");
   background-size: cover;
-  height: 135px;
+  height: 60px;
 }
 
 .card.hovercard .avatar {
   position: relative;
   top: -50px;
   margin-bottom: -50px;
+}
+.image{
+ margin-left: 90px;
+  height: 50%;
+  width: 50%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+ 
 }
 
 .card.hovercard .avatar img {

@@ -1,11 +1,13 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-
+import { UserService } from '../../../services/user.service';
+import { Router } from '@angular/router';
 @Component({
     // moduleId: module.id,
     selector: 'navbar-cmp',
-    templateUrl: 'navbar.component.html'
+    templateUrl: 'navbar.component.html',
+    styleUrls: ['./navbar.component.css']
 })
 
 export class NavbarComponent implements OnInit {
@@ -14,9 +16,22 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(location: Location, private element: ElementRef) {
+    constructor(location: Location, private element: ElementRef,private userService: UserService, private router: Router) {
         this.location = location;
         this.sidebarVisible = false;
+    }
+
+
+    // Implement the logout logic
+    logout(): void {
+        sessionStorage.removeItem('user_id');
+        this.userService.logout().subscribe(() => {
+            // Successfully logged out
+            // You can clear any user-related data or perform additional logout actions here
+
+            // Redirect to the login page or any other desired page
+            this.router.navigate(['/home']);
+        });
     }
 
     ngOnInit() {

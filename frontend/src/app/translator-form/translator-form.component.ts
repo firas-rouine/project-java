@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslatorService } from '../services/translator-service.service';
 import { UserService } from '../services/user.service'; 
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-translator-form',
@@ -13,7 +15,9 @@ export class TranslatorFormComponent implements OnInit {
   formSubmitted = false;
   user: any; 
 
-  constructor(
+
+  constructor(    private router: Router ,
+
     private formBuilder: FormBuilder,
     private translatorService: TranslatorService,
     private userService: UserService // 
@@ -93,10 +97,11 @@ export class TranslatorFormComponent implements OnInit {
           const translator_id = response.id;
           // console.log('User ID from response:', user_id); // Add this line
           sessionStorage.setItem('translator_id', translator_id);
-          console.log(translator_id);
-          
+          // console.log(translator_id);
+           // Redirect to the login page
+
           console.log('Translator created successfully:', response);
-          
+          this.router.navigate(['/home']);
 
           // Additional actions after successful submission
         },

@@ -9,7 +9,7 @@ import { Translator } from '../model/Translator';
 })
 export class TranslatorsListComponent {
 
-  translators: Translator[] = [];
+  translators: any[] = [];
 
   constructor(private translatorService: TranslatorService) { }
 
@@ -17,9 +17,9 @@ export class TranslatorsListComponent {
   ngOnInit(): void {
     this.translatorService.getByAvailability().subscribe(data => {
       this.translators = data
-      // console.log(data);
-      // console.log("***********");
-      // console.log(this.translators);
+      console.log(data);
+      console.log("***********");
+      console.log(this.translators);
     })
   }
 

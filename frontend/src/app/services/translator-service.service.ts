@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TranslatorService {
-  private baseUrl = 'http://localhost:8080/api';
+  private baseUrl = 'http://localhost:8080/api'; 
   private search = {
     endTime: Date(),
     startTime: Date(),
     selectedLocation: ''
-  } 
+  }
 
   constructor(private http: HttpClient) {
     
@@ -23,6 +23,7 @@ export class TranslatorService {
   setSearch(newEvent: any) {
     this.search = newEvent;
   }
+
   // Method to create a new translator
   createTranslator(translatorData: any): Observable<any> {
     const url = `${this.baseUrl}/translators/create`; 
@@ -37,7 +38,7 @@ export class TranslatorService {
 
   // Method to delete a translator by ID
   deleteTranslator(translatorId: number): Observable<any> {
-    const url = `${this.baseUrl}/translators/${translatorId}`; 
+    const url = `${this.baseUrl}/translators/delete/${translatorId}`; 
     return this.http.delete(url);
   }
 
@@ -53,7 +54,6 @@ export class TranslatorService {
     return this.http.get(url);
   }
 
-  
   // get the list of avialable translators
   public getByAvailability(): Observable<any[]>{
     return this.http.post<any[]>(this.baseUrl+'/translators/available',this.search);

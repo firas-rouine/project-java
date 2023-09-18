@@ -8,14 +8,14 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'pe-7s-graph', class: '' },
+    { path: '/user-dashboard', title: 'Dashboard',  icon: 'pe-7s-graph', class: '' },
     { path: '/user', title: 'User Profile',  icon:'pe-7s-user', class: '' },
-    { path: '/table', title: 'Table List',  icon:'pe-7s-note2', class: '' },
 ];
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html'
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
   menuItems!: any[];

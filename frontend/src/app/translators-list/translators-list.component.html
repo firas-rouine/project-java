@@ -2,13 +2,14 @@
     <div class="myContainerrr">
             <div class="box mb-3" *ngFor="let translator of translators">
                 <div class="image">
-                    <img [src]="'/assets/img/' + translator.image">
+                    <img [src]="translator.image">
                 </div>
-                <div class="name_job">{{translator.user.userName}}</div>
+                <div class="name_job">{{translator.translator.userName}}</div>
                 <p> {{translator.description}}
                 </p>
                 <div class="btns">
-                    <a [routerLink]="['/translator-info/', translator.id]" >Hire Me</a>
+                    <!-- <a [routerLink]="['/videos/', translator.id]" >Hire Me</a> -->
+                    <a [routerLink]="['/login']" >Hire Me</a>
             </div>
         </div>
 

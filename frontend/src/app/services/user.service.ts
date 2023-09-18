@@ -31,11 +31,15 @@ export class UserService {
     const url = `${this.baseUrl}/users/${userId}`; 
     return this.http.get(url, { withCredentials: true });
   }
-  logout(): Observable<any> {
-    const url = `${this.baseUrl}/logout`;
-    return this.http.get(url, { withCredentials: true });
-  }
-  
-  
+     // Get all user 
+     getAllUsers(): Observable<any> {
+      const url = `${this.baseUrl}/allUsers`; 
+      return this.http.get(url);
+    }
+    logout(): Observable<any> {
+      const url = `${this.baseUrl}/logout`;
+      return this.http.get(url, { withCredentials: true });
+    }
+    
 
 }

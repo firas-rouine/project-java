@@ -21,6 +21,7 @@ import { TranslatorLayoutComponent } from './layouts/translator-layout/translato
 import { MeetingComponent } from './meeting/meeting.component';
 import { VideoComponent } from './video-compnent/video-compnent.component';
 import { VideoListComponent } from './video-list/video-list.component';
+import { AdminLayoutComponent } from './admin-dash/admin-layout/admin-layout.component';
 
 
 
@@ -43,12 +44,24 @@ const routes: Routes = [
   // { path: 'videoList' , component : VideoListComponent},
   { path: '' , component : HomeComponent},
   { path: 'meeting' , component : MeetingComponent},
-  { path: 'video' , component : VideoComponent},
+  { path: 'videos/:id' , component : VideoComponent},
   { path: 'videoList' , component : VideoListComponent},
-  
+    //admin dashboard
+    {
+      path: 'admin',
+      redirectTo: 'admin-dashboard',
+      pathMatch: 'full',
+    }, {
+      path: '',
+      component: AdminLayoutComponent,
+      children: [
+          {
+        path: '',
+        loadChildren: () => import('./admin-dash/admin-layout/admin-layout.module').then(x => x.AdminLayoutModule)
+    }]},
   {
-    path: '',
-    redirectTo: 'dashboard',
+    path: 'user-dash',
+    redirectTo: 'user-dashboard',
     pathMatch: 'full',
   }, {
     path: '',
@@ -56,14 +69,17 @@ const routes: Routes = [
     children: [
         {
       path: '',
-      loadChildren: () => import('./layouts/translator-layout/translator-layout.module').then(x => x.AdminLayoutModule)
+      loadChildren: () => import('./layouts/translator-layout/translator-layout.module').then(x => x.TranslatorLayoutModule)
   }]},
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: ''
   }
+    //admin dashboard
+ 
 
 ];
+
 
 @NgModule({
   imports: [

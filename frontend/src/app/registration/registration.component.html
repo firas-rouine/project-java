@@ -42,7 +42,7 @@
               <input class="input" type="text" formControlName="userName" >
               <div *ngIf="formSubmitted && registrationForm.get('userName')?.hasError('required')" class="text-danger">Username is required</div>
               <div *ngIf="formSubmitted && registrationForm.get('userName')?.hasError('minlength')" class="text-danger">Username must be at least 3 characters</div>
-              <div *ngIf="formSubmitted && registrationForm.get('userName')?.hasError('pattern')" class="text-danger">Username must contain only letters</div>
+              <!-- <div *ngIf="formSubmitted && registrationForm.get('userName')?.hasError('pattern')" class="text-danger">Username must contain only letters</div> -->
            
         
            

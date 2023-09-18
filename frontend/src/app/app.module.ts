@@ -30,6 +30,9 @@ import { TranslatorLayoutComponent } from './layouts/translator-layout/translato
 import { MeetingComponent } from './meeting/meeting.component';
 import { VideoComponent } from './video-compnent/video-compnent.component';
 import { VideoListComponent } from './video-list/video-list.component';
+import { AdminLayoutComponent } from './admin-dash/admin-layout/admin-layout.component';
+import { Sidebar2Module } from "./admin-dash/sidebar/sidebar2.module";
+import { Navbar2Module } from './admin-dash/shared/navbar2/navbar2.module';
 
 // import { CommonModule } from '@angular/common';
 
@@ -39,40 +42,40 @@ import { VideoListComponent } from './video-list/video-list.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegistrationComponent,
-    LoginComponent,
-    TranslatorFormComponent,
-    HomeComponent,
-    NavbarComponent,
-    TranslatorProfileUpdateComponent,
-    SearchComponent,
-    TranslatorsListComponent,
-    ShowOneTransaltorComponent,
-
-    TranslatorLayoutComponent,
-    MeetingComponent,
-    VideoComponent,
-VideoListComponent
-    
-     
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    ScheduleModule, 
-    RecurrenceEditorModule,
-    // CommonModule, 
-    BrowserAnimationsModule,
-    RouterModule,
-    NavbarModule,
-    SidebarModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        RegistrationComponent,
+        LoginComponent,
+        TranslatorFormComponent,
+        HomeComponent,
+        NavbarComponent,
+        TranslatorProfileUpdateComponent,
+        SearchComponent,
+        TranslatorsListComponent,
+        ShowOneTransaltorComponent,
+        AdminLayoutComponent,
+        TranslatorLayoutComponent,
+        MeetingComponent,
+        VideoComponent,
+        VideoListComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        ScheduleModule,
+        RecurrenceEditorModule,
+        // CommonModule, 
+        BrowserAnimationsModule,
+        RouterModule,
+        NavbarModule,
+        SidebarModule,
+        Sidebar2Module,
+        Navbar2Module
+    ]
 })
 export class AppModule { }

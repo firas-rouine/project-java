@@ -42,15 +42,31 @@ export class LoginComponent {
           sessionStorage.setItem('user_id', user_id);
           
 
-         
-          
+            
+            this.userService.getUserById(user_id).subscribe(
+            (userdata) => {
+              if (userdata.profile === 0) {
+
+                this.router.navigate(['/home']);
+      
+              } else if (userdata.profile == 1) {
+                console.log("user profile = ",userdata.profile);
+                this.router.navigate(['/home']);
+      
+              } else {
+                console.log("user profile = ",userdata.profile);
+                this.router.navigate(['/admin']);
+              }
+            },
+            (error) => {
+              console.error('Error fetching translator data:', error);
+            }
+          );
 
           // Save user data in a cookie
           // this.cookieService.set('user_id', JSON.stringify(user_id));
-          
           console.log('Login successful:', response);
-          this.router.navigate(['/createTranslator']);
-          this.loginError = false; // Reset login error
+
         },
         error => {
           console.error('Login failed:', error);

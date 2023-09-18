@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import AgoraRTC from 'agora-rtc-sdk-ng';
 
 @Component({
@@ -33,7 +34,7 @@ export class MeetingComponent implements OnInit {
   
   remoteTracks: Record<string, AgoraRTC.IRemoteUser> = {};
 
-  constructor() { this.client = AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' });}
+  constructor(private router: Router) { this.client = AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' });}
 
   ngOnInit() {
     
@@ -105,6 +106,7 @@ export class MeetingComponent implements OnInit {
       for (const trackName in this.localTracks) {
         const track = this.localTracks[trackName];
         if (track) {
+
           track.stop();
           track.close();
           this.localTracks[trackName] = null;
@@ -124,6 +126,8 @@ export class MeetingComponent implements OnInit {
       if (joinWrapper) {
         joinWrapper.style.display = 'block';
       }
+      this.router.navigate(['/user-dash']);
+
     });
     
   

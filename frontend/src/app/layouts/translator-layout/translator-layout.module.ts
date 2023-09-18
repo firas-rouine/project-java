@@ -9,7 +9,9 @@ import { translatorLayoutRoutes } from './translator-layout.routing';
 
 import { HomeComponent } from '../home/home.component';
 import { UserComponent } from '../user/user.component';
-import { TablesComponent } from '../tables/tables.component';
+import { TransscheduleComponent } from '../schedule/trans.schedule.component';
+import { RecurrenceEditorModule, ScheduleModule } from '@syncfusion/ej2-angular-schedule';
+import { CounterComponent } from '../counter/counter.component';
 
 
 @NgModule({
@@ -18,12 +20,16 @@ import { TablesComponent } from '../tables/tables.component';
     RouterModule.forChild(translatorLayoutRoutes),
     FormsModule,
     LbdModule,
+    ScheduleModule, 
+    RecurrenceEditorModule,
+    ReactiveFormsModule
   ],
   declarations: [
     HomeComponent,
     UserComponent,
-    TablesComponent,
+    TransscheduleComponent,
+    CounterComponent
   ]
 })
 
-export class AdminLayoutModule {}
+export class TranslatorLayoutModule {}

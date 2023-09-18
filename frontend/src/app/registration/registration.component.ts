@@ -22,7 +22,7 @@ export class RegistrationComponent {
     private router: Router // Inject the Router
   ) {
     this.registrationForm = this.formBuilder.group({
-      userName: ['', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z]*$')]],
+      userName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email], [this.checkEmail.bind(this)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirm: ['', [Validators.required, Validators.minLength(8)]],
@@ -77,7 +77,7 @@ export class RegistrationComponent {
           console.log('Registration successful:', response);
                 // Conditional redirection based on the 'profile' value
         if (formData.profile === '0') {
-          this.router.navigate(['/login']); // Redirect to the login page
+          this.router.navigate(['/videos/3']); // [routerLink]="['/videos/', translator.id]"
         } else {
           this.router.navigate(['/createTranslator']); // Redirect to the home page
         }
